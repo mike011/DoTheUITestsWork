@@ -10,7 +10,7 @@ target 'DoTheUITestsWork' do
   target 'DoTheUITestsWorkTests' do
     inherit! :search_paths
     # Pods for testing
-    pod 'iOSSnapshotTestCase'
+    pod 'iOSSnapshotTestCase', '4.0.0'
   end
 
 end

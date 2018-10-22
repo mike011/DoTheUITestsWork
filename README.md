@@ -1,5 +1,13 @@
 # DoTheUITestsWork
 
+TLDR: Yes
+
+# Fix
+- Snapshot 2.2.0 does not support Swift, upgrading to 4.0.0 fixed the issue.
+- I cannot remember why I was using 2.2.0
+
+
+# Problem
 This repo was created to log a bug against ios-snapshot-test-case. The issue logged is that some supporting library aren't being loaded when trying to run the tests after setting up Cocoapods. Here is a link to the issue: https://github.com/uber/ios-snapshot-test-case/issues/55
 
 Environment:
@@ -17,7 +25,7 @@ Steps:
 4. Open newly created workspace
 5. Run tests.
 
-The tests do not run and following error output is reproduced. 
+The tests do not run and following error output is reproduced.
 ```
 2018-10-15 20:58:13.473893-0400 DoTheUITestsWork[31059:673798] Failed to load test bundle from file:///Users/michael/Library/Developer/Xcode/DerivedData/DoTheUITestsWork-drkfmdibjmrlmibmewfcsultxnau/Build/Products/Debug-iphonesimulator/DoTheUITestsWork.app/PlugIns/DoTheUITestsWorkTests.xctest/: Error Domain=NSCocoaErrorDomain Code=3587 "dlopen_preflight(/Users/michael/Library/Developer/Xcode/DerivedData/DoTheUITestsWork-drkfmdibjmrlmibmewfcsultxnau/Build/Products/Debug-iphonesimulator/DoTheUITestsWork.app/PlugIns/DoTheUITestsWorkTests.xctest/DoTheUITestsWorkTests): Library not loaded: @rpath/libswiftSwiftOnoneSupport.dylib
   Referenced from: /Users/michael/Library/Developer/Xcode/DerivedData/DoTheUITestsWork-drkfmdibjmrlmibmewfcsultxnau/Build/Products/Debug-iphonesimulator/DoTheUITestsWork.app/PlugIns/DoTheUITestsWorkTests.xctest/Frameworks/FBSnapshotTestCase.framework/FBSnapshotTestCase

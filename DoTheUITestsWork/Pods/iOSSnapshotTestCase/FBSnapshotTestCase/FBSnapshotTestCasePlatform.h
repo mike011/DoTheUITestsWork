@@ -1,10 +1,9 @@
 /*
- *  Copyright (c) 2015, Facebook, Inc.
- *  All rights reserved.
+ *  Copyright (c) 2017-2018, Uber Technologies, Inc.
+ *  Copyright (c) 2015-2018, Facebook, Inc.
  *
- *  This source code is licensed under the BSD-style license found in the
- *  LICENSE file in the root directory of this source tree. An additional grant
- *  of patent rights can be found in the PATENTS file in the same directory.
+ *  This source code is licensed under the MIT license found in the
+ *  LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -13,6 +12,8 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  An option mask that allows you to cherry pick which parts you want to 'be agnostic' in the snapshot file name.
@@ -23,10 +24,10 @@ extern "C" {
  - FBSnapshotTestCaseAgnosticOptionScreenSize: The file name should be agnostic on the screen size of the current keyWindow, as returned by UIApplication.sharedApplication.keyWindow.bounds.size.
  */
 typedef NS_OPTIONS(NSUInteger, FBSnapshotTestCaseAgnosticOption) {
-  FBSnapshotTestCaseAgnosticOptionNone = 1 << 0,
-  FBSnapshotTestCaseAgnosticOptionDevice = 1 << 1,
-  FBSnapshotTestCaseAgnosticOptionOS = 1 << 2,
-  FBSnapshotTestCaseAgnosticOptionScreenSize = 1 << 3
+    FBSnapshotTestCaseAgnosticOptionNone = 1 << 0,
+    FBSnapshotTestCaseAgnosticOptionDevice = 1 << 1,
+    FBSnapshotTestCaseAgnosticOptionOS = 1 << 2,
+    FBSnapshotTestCaseAgnosticOptionScreenSize = 1 << 3
 };
 
 /**
@@ -45,7 +46,7 @@ BOOL FBSnapshotTestCaseIs64Bit(void);
  @returns An @c NSOrderedSet object containing strings that are appended to the reference images directory.
  */
 NSOrderedSet *FBSnapshotTestCaseDefaultSuffixes(void);
-  
+
 /**
  Returns a fully «normalized» file name.
  Strips punctuation and spaces and replaces them with @c _. Also appends the device model, running OS and screen size to the file name.
@@ -62,6 +63,8 @@ NSString *FBDeviceAgnosticNormalizedFileName(NSString *fileName);
  @return An @c NSString object containing the passed @c fileName and optionally, with the device model and/or OS and/or screen size appended at the end.
  */
 NSString *FBDeviceAgnosticNormalizedFileNameFromOption(NSString *fileName, FBSnapshotTestCaseAgnosticOption option);
+
+NS_ASSUME_NONNULL_END
 
 #ifdef __cplusplus
 }
